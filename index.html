@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Seminario Permanente Ciencia, Filosofía y Espiritualidad - UAL</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+<body>
+
+    <div class="top-bar">
+        <div class="container d-flex justify-content-between align-items-center">
+            <div class="logo-container">
+            <img src="img/2325.png" alt="Logo UAL" class="ual-logo">
+        </div>
+            
+            <div class="d-flex align-items-center gap-3">
+                <div class="d-none d-md-flex align-items-center text-secondary small">
+                    <i class="bi bi-clock me-2"></i>
+                    <span id="clock" class="fw-bold">...</span>
+                </div>
+                <div class="lang-switch">
+                    <button class="btn btn-sm btn-outline-primary active" onclick="changeLanguage('es')">ES</button>
+                    <button class="btn btn-sm btn-outline-primary" onclick="changeLanguage('en')">EN</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <nav class="navbar navbar-expand-lg navbar-dark sticky-top glass-nav">
+        <div class="container">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#mainNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="mainNav">
+                <ul class="navbar-nav mx-auto">
+                    <li class="nav-item"><a class="nav-link active" href="#inicio" data-i18n="nav_home">Inicio</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#presentacion" data-i18n="nav_presentation">Presentación</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#noticias" data-i18n="nav_news">Noticias</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#eventos" data-i18n="nav_events">Eventos</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#objetivos" data-i18n="nav_objectives">Objetivos</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#lineas" data-i18n="nav_research">Investigación</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#equipo" data-i18n="nav_team">Equipo</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#contacto" data-i18n="nav_contact">Contacto</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <header id="inicio" class="hero-section">
+        <div class="hero-overlay"></div>
+        <div class="container position-relative z-2">
+            <div class="row justify-content-center">
+                <div class="col-lg-10 text-center">
+                    <h1 class="hero-title" data-i18n="hero_title">Seminario Permanente<br>“Ciencia, Filosofía y Espiritualidad”</h1>
+                    <p class="hero-subtitle" data-i18n="hero_subtitle">Un espacio de diálogo interdisciplinario para fomentar el pensamiento crítico.</p>
+                    <a href="#presentacion" class="btn btn-light btn-lg mt-4 rounded-pill px-4 fw-bold" data-i18n="btn_more">Saber más</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <section id="presentacion" class="section-padding bg-white">
+        <div class="container">
+            <h2 class="section-title" data-i18n="title_presentation">Presentación</h2>
+            <div class="divider-line"></div>
+            <p class="lead text-muted" data-i18n="pres_lead">Fomentando el debate entre visiones científicas y espirituales.</p>
+            <p data-i18n="pres_text">Este Seminario Permanente nace con el propósito de crear un puente de diálogo similar al de instituciones de prestigio mundial.</p>
+        </div>
+    </section>
+
+    <section id="noticias" class="section-padding bg-light">
+        <div class="container">
+            <h2 class="section-title" data-i18n="title_news">Últimas Noticias</h2>
+            <div class="divider-line"></div>
+
+            <div class="filter-box p-4 bg-white rounded shadow-sm mb-5">
+                <div class="row g-3">
+                    <div class="col-md-4">
+                        <label class="form-label small text-muted" data-i18n="filter_search">Buscar</label>
+                        <input type="text" id="searchInput" class="form-control" placeholder="...">
+                    </div>
+                    <div class="col-md-3">
+                        <label class="form-label small text-muted" data-i18n="filter_cat">Categoría</label>
+                        <select id="categorySelect" class="form-select">
+                            <option value="all" data-i18n="opt_all">Todas</option>
+                            <option value="Actualidad">Actualidad</option>
+                            <option value="Publicación">Publicación</option>
+                            <option value="Congreso">Congreso</option>
+                        </select>
+                    </div>
+                    <div class="col-md-3">
+                        <label class="form-label small text-muted" data-i18n="filter_date">A partir de fecha</label>
+                        <input type="date" id="dateInput" class="form-control">
+                    </div>
+                    <div class="col-md-2 d-flex align-items-end">
+                        <button class="btn btn-primary w-100" onclick="filterNews()" data-i18n="btn_filter">Filtrar</button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="row g-4" id="newsContainer">
+                </div>
+        </div>
+    </section>
+
+    <section id="eventos" class="section-padding bg-white">
+        <div class="container">
+            <h2 class="section-title" data-i18n="title_events">Próximos Eventos</h2>
+            <div class="divider-line"></div>
+            <div class="list-group shadow-sm">
+                <div class="list-group-item p-4 d-flex justify-content-between align-items-center flex-wrap">
+                    <div class="d-flex align-items-center">
+                        <div class="event-date-box text-center me-4">
+                            <span class="d-block h4 fw-bold mb-0 text-primary">15</span>
+                            <span class="d-block small text-uppercase fw-bold text-muted">Mar</span>
+                        </div>
+                        <div>
+                            <h5 class="mb-1 fw-bold" data-i18n="event_1_title">Mesa Redonda: Conciencia y Universo</h5>
+                            <p class="mb-0 text-muted"><i class="bi bi-geo-alt-fill text-danger"></i> Sala de Grados</p>
+                        </div>
+                    </div>
+                    <a href="#" class="btn btn-primary rounded-pill px-4 mt-3 mt-md-0 shadow-sm" data-i18n="btn_join">Inscribirse</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="objetivos" class="py-5 bg-light">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-md-4 text-center text-md-start">
+                    <h2 class="section-title mb-0" data-i18n="title_objectives">Objetivos</h2>
+                    <div class="divider-line mt-2"></div>
+                </div>
+                <div class="col-md-8">
+                    <div class="border-start border-4 border-primary ps-4">
+                        <p class="lead mb-0 fst-italic" data-i18n="obj_main">"Crear un espacio de diálogo..."</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="lineas" class="section-padding bg-white">
+        <div class="container">
+            <h2 class="section-title" data-i18n="title_lines">Líneas de Investigación</h2>
+            <div class="divider-line mb-5"></div>
+
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="research-box p-4 h-100 rounded border text-center">
+                        <i class="bi bi-infinity fs-1 mb-3 text-primary icon-transition"></i>
+                        <h5 class="fw-bold" data-i18n="line_1">Ciencia y Espiritualidad</h5>
+                        <p class="small text-muted mt-2" data-i18n="desc_1">Conexiones ontológicas y epistemológicas.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="research-box p-4 h-100 rounded border text-center">
+                        <i class="bi bi-globe-americas fs-1 mb-3 text-primary icon-transition"></i>
+                        <h5 class="fw-bold" data-i18n="line_2">Visiones del Cosmos</h5>
+                        <p class="small text-muted mt-2" data-i18n="desc_2">La vida en nuestro planeta y el universo.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="research-box p-4 h-100 rounded border text-center">
+                        <i class="bi bi-person-hearts fs-1 mb-3 text-primary icon-transition"></i>
+                        <h5 class="fw-bold" data-i18n="line_3">Consciencia Humana</h5>
+                        <p class="small text-muted mt-2" data-i18n="desc_3">Evolución, desarrollo interior y psicología.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="research-box p-4 h-100 rounded border text-center">
+                        <i class="bi bi-tree fs-1 mb-3 text-primary icon-transition"></i>
+                        <h5 class="fw-bold" data-i18n="line_4">Ecología Profunda</h5>
+                        <p class="small text-muted mt-2" data-i18n="desc_4">Sostenibilidad y consciencia ambiental.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="research-box p-4 h-100 rounded border text-center">
+                        <i class="bi bi-yin-yang fs-1 mb-3 text-primary icon-transition"></i>
+                        <h5 class="fw-bold" data-i18n="line_5">Filosofía Perenne</h5>
+                        <p class="small text-muted mt-2" data-i18n="desc_5">Tradiciones sapienciales y sabiduría antigua.</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="research-box p-4 h-100 rounded border text-center">
+                        <i class="bi bi-heart-pulse fs-1 mb-3 text-primary icon-transition"></i>
+                        <h5 class="fw-bold" data-i18n="line_6">Salud y Bienestar</h5>
+                        <p class="small text-muted mt-2" data-i18n="desc_6">Felicidad humana y terapias integrativas.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="equipo" class="section-padding bg-light">
+        <div class="container">
+            <h2 class="section-title text-center" data-i18n="title_team">Nuestro Equipo</h2>
+            <div class="divider-line mx-auto mb-5"></div>
+
+            <div class="row justify-content-center">
+                <div class="col-md-4 mb-4">
+                    <a href="https://www.ual.es/persona/514853505355505674" target="_blank" class="team-link">
+                        <div class="team-card bg-white p-4 rounded shadow-sm h-100 text-center">
+                            <h5 class="fw-bold text-primary">Rafael Álvaro Pulido Moyano</h5>
+                            <span class="badge bg-primary mb-2" data-i18n="role_director">Director</span>
+                            <p class="small text-muted mt-2">Universidad de Almería</p>
+                            <small class="text-primary"><i class="bi bi-box-arrow-up-right"></i> <span data-i18n="btn_profile">Ver perfil</span></small>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <a href="https://www.ual.es/persona/505553505451505386" target="_blank" class="team-link">
+                        <div class="team-card bg-white p-4 rounded shadow-sm h-100 text-center">
+                            <h5 class="fw-bold text-primary">María Dolores Gil Montoya</h5>
+                            <span class="badge bg-secondary mb-2" data-i18n="role_codirector_f">Codirectora</span>
+                            <p class="small text-muted mt-2">Universidad de Almería</p>
+                            <small class="text-primary"><i class="bi bi-box-arrow-up-right"></i> <span data-i18n="btn_profile">Ver perfil</span></small>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <a href="#" class="team-link">
+                        <div class="team-card bg-white p-4 rounded shadow-sm h-100 text-center">
+                            <h5 class="fw-bold text-primary">Esteban José Velázquez Guerra</h5>
+                            <span class="badge bg-secondary mb-2" data-i18n="role_codirector_m">Codirector</span>
+                            <p class="small text-muted mt-2">Colaborador Externo</p>
+                        </div>
+                    </a>
+                </div>
+            </div>
+            
+            <div class="row mt-5">
+                <div class="col-12 text-center">
+                    <div class="p-3 border rounded bg-white d-inline-block shadow-sm">
+                        <p class="mb-0"><strong data-i18n="label_collab">Entidad colaboradora:</strong> Fundación Centro Persona y Justicia</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer id="contacto" class="text-white bg-dark">
+        <div class="footer-top py-5 border-bottom border-secondary">
+            <div class="container">
+                <div class="row">
+                    <div class="col-lg-4 col-md-6 mb-4">
+                        <h5 class="fw-bold mb-3 text-white" data-i18n="nav_contact">Contacto</h5>
+                        <p class="mb-1"><i class="bi bi-envelope me-2"></i> rpulido@ual.es</p>
+                        <p class="mb-1"><i class="bi bi-envelope me-2"></i> vipori@ual.es</p>
+                        <p class="mt-3 text-white-50">Vicerrectorado de Postgrado y Relaciones Institucionales</p>
+                    </div>
+
+                    <div class="col-lg-4 col-md-6 mb-4">
+                        <h5 class="fw-bold mb-3 text-white" data-i18n="footer_loc">Ubicación</h5>
+                        <p class="text-white-50">
+                            Edificio de Gobierno y Paraninfo<br>
+                            Planta: 2, Despacho: 2.27.0<br>
+                            Ctra. Sacramento s/n<br>
+                            04120 La Cañada de San Urbano<br>
+                            Almería, España
+                        </p>
+                    </div>
+
+                    <div class="col-lg-4 col-md-12 mb-4">
+                        <h5 class="fw-bold mb-3 text-white" data-i18n="footer_links">Enlaces de Interés</h5>
+                        <ul class="list-unstyled">
+                            <li><a href="https://www.ual.es" target="_blank" class="footer-link text-white-50">Universidad de Almería</a></li>
+                            <li><a href="https://www.ual.es/universidad/organosgobierno/vpostgrado" target="_blank" class="footer-link text-white-50">Vicerrectorado de Postgrado</a></li>
+                            <li><a href="https://www.ual.es/transparencia" target="_blank" class="footer-link text-white-50">Portal de Transparencia</a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer-bottom py-3 text-center">
+            <div class="container">
+                <small class="text-white-50">
+                    &copy; <span id="year"></span> Seminario Permanente UAL.
+                    <span class="mx-2">|</span> 
+                    <a href="https://www.ual.es/avisolegal" target="_blank" class="text-white-50 text-decoration-underline" data-i18n="footer_legal">Aviso Legal</a>
+                </small>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,246 @@
+/* =========================================
+   1. VARIABLES GLOBALES
+   ========================================= */
+:root {
+    --primary-color: #004c99;       /* Azul UAL Principal */
+    --dark-blue: #002a5c;           /* Azul UAL Oscuro (Nuevo para menú) */
+    --accent-color: #00bfff;        /* Cian brillante para detalles */
+    --text-color: #333;
+    --text-light: #f8f9fa;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+    color: var(--text-color);
+    line-height: 1.6;
+    overflow-x: hidden; /* Evita scroll horizontal no deseado */
+}
+
+h1, h2, h3, h4, h5 { font-weight: 700; }
+a { text-decoration: none; transition: 0.3s; }
+
+/* =========================================
+   2. TOP BAR & MENÚ DE NAVEGACIÓN
+   ========================================= */
+.top-bar {
+    background: #fff;
+    border-bottom: 1px solid #eee;
+    padding: 10px 0;
+}
+
+/* Logo Ajustes */
+.logo-container {
+    max-width: 200px;
+    height: auto;
+}
+.ual-logo {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+/* NAVBAR: Ahora azul oscuro sólido */
+.navbar {
+    background-color: var(--dark-blue) !important;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+    padding: 1rem 0; /* Un poco más de aire */
+}
+
+.nav-link {
+    color: rgba(255,255,255,0.85) !important;
+    text-transform: uppercase;
+    font-size: 0.85rem;
+    font-weight: 500;
+    padding: 10px 15px !important;
+    transition: all 0.3s ease;
+}
+
+.nav-link:hover, .nav-link.active {
+    color: #ffffff !important;
+    border-bottom: 2px solid var(--accent-color);
+    text-shadow: 0 0 10px rgba(0,191,255,0.5);
+}
+
+/* Botón hamburguesa blanco en móvil */
+.navbar-toggler {
+    border-color: rgba(255,255,255,0.5);
+}
+.navbar-toggler-icon {
+    background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 30 30' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='rgba(255, 255, 255, 1)' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 7h22M4 15h22M4 23h22'/%3E%3C/svg%3E");
+}
+
+/* =========================================
+   3. HERO SECTION (PORTADA GIGANTE)
+   ========================================= */
+.hero-section {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    
+    /* RUTA LOCAL: ../img/ sube un nivel desde 'css' y entra en 'img' */
+    background: linear-gradient(
+        to bottom,
+        rgba(0, 42, 92, 0.7),   /* Azul UAL arriba (más transparente para ver foto) */
+        rgba(0, 0, 0, 0.9)      /* Negro abajo (para fundirse con la web) */
+    ), 
+    url('../img/alcazaba-1758180_1280.jpg') no-repeat center center scroll; 
+    
+    background-size: cover; /* Cubre toda la pantalla */
+    color: white;
+    text-align: center;
+    padding: 0;
+}
+
+.hero-title {
+    font-size: 3.5rem; /* Letra más grande */
+    margin-bottom: 1.5rem;
+    text-shadow: 0 4px 10px rgba(0,0,0,0.5);
+}
+
+.hero-subtitle {
+    font-size: 1.5rem;
+    font-weight: 300;
+    color: rgba(255,255,255,0.9);
+}
+
+/* Ajuste para móviles */
+@media (max-width: 768px) {
+    .hero-title { font-size: 2.5rem; }
+    .hero-subtitle { font-size: 1.2rem; }
+    .logo-container { max-width: 150px; }
+}
+
+/* =========================================
+   4. SECCIONES GENERALES
+   ========================================= */
+.section-padding { padding: 80px 0; }
+.section-title { 
+    color: var(--primary-color); 
+    text-transform: uppercase; 
+    letter-spacing: 1px; 
+    font-weight: 800;
+}
+.divider-line { 
+    width: 60px; 
+    height: 4px; 
+    background: var(--accent-color); 
+    margin-bottom: 30px; 
+}
+
+/* =========================================
+   5. CAJAS DE INVESTIGACIÓN (Tus estilos)
+   ========================================= */
+.research-box {
+    background-color: #fff;
+    border: 1px solid #e9ecef;
+    transition: all 0.4s cubic-bezier(0.165, 0.84, 0.44, 1);
+    cursor: default;
+}
+
+.research-box:hover {
+    background-color: var(--primary-color);
+    color: white;
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 76, 153, 0.2);
+    border-color: var(--primary-color);
+}
+
+.research-box:hover .text-muted {
+    color: rgba(255,255,255,0.8) !important;
+}
+
+.research-box:hover .icon-transition {
+    color: var(--accent-color) !important;
+    transform: scale(1.2);
+}
+
+.icon-transition { transition: all 0.4s ease; }
+
+/* =========================================
+   6. NOTICIAS Y EVENTOS
+   ========================================= */
+.filter-box { border-left: 5px solid var(--accent-color); }
+
+.news-card { 
+    transition: transform 0.3s; 
+    overflow: hidden; 
+}
+.news-card:hover { 
+    transform: translateY(-5px); 
+    box-shadow: 0 10px 15px rgba(0,0,0,0.1) !important; 
+}
+
+.event-date-box { 
+    background: rgba(0,76,153,0.1); 
+    padding: 10px; 
+    border-radius: 8px; 
+    min-width: 70px; 
+}
+
+/* Estilo para página de noticia individual */
+.news-content { line-height: 1.8; text-align: justify; }
+
+/* =========================================
+   7. EQUIPO (TARJETAS)
+   ========================================= */
+.team-link { text-decoration: none; color: inherit; }
+.team-card { transition: transform 0.3s ease, box-shadow 0.3s ease; border: 1px solid #f0f0f0; }
+.team-card:hover { transform: translateY(-5px); box-shadow: 0 10px 20px rgba(0,0,0,0.1) !important; border-color: var(--accent-color); }
+.team-avatar {
+    width: 80px; height: 80px;
+    background: var(--primary-color); color: #fff;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 1.5rem; font-weight: bold;
+}
+
+/* =========================================
+   8. FOOTER (DEGRADADO ESPECIAL)
+   ========================================= */
+footer#contacto {
+    /* DEGRADADO SUAVE Y ELEGANTE */
+    background: linear-gradient(
+        180deg, 
+        #ffffff 0%,      /* Empieza Blanco puro (se funde con la sección anterior) */
+        #e6f2ff 15%,     /* Azul muy pálido (transición suave) */
+        #004c99 40%,     /* Azul UAL Corporativo */
+        #002a5c 70%,     /* Azul Marino Profundo */
+        #000000 100%     /* Negro Puro al final */
+    );
+    
+    /* ESPACIADO CLAVE: Empujamos el contenido abajo para que caiga en la zona oscura */
+    padding-top: 150px; 
+    padding-bottom: 30px;
+    border: none;
+    margin-top: -50px; /* Truco: subimos el footer un poco para que solape si es necesario */
+}
+
+/* Aseguramos que los textos del footer sean blancos y legibles */
+.footer-top h5 {
+    color: #fff !important;
+    font-weight: 800;
+    letter-spacing: 1px;
+    margin-bottom: 20px;
+}
+
+.footer-top p, 
+.footer-top a, 
+.footer-top li,
+.footer-top i {
+    color: rgba(255,255,255,0.85) !important;
+    transition: color 0.3s ease;
+}
+
+.footer-link:hover {
+    color: var(--accent-color) !important; /* Color cian al pasar el ratón */
+    text-decoration: none;
+    padding-left: 5px; /* Pequeño movimiento elegante */
+}
+
+/* Línea sutil de separación para el copyright */
+.footer-bottom {
+    border-top: 1px solid rgba(255,255,255,0.1);
+    margin-top: 40px;
+    padding-top: 20px;
+}
